@@ -4,7 +4,6 @@ import GetImages from "./GetImages"
 export default function App() {
   return (
     <>
-     <h1>Hello,World</h1>
       {/* <BrowserRouter>
         <Routes>
           <Route path="/" element={<GetImages />}></Route>
