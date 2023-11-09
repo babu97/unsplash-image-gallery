@@ -26,7 +26,7 @@ export default function GetImages(){
        (<section className="px-5 container mx-auto">
         <h1 className="font-bold text-3xl md:text-4xl lg:text-6xl my-10 lg:mt-20  lg:md-16 text-slate-800"> 
         Recommended for you </h1>
-        <div>
+        <div className="grid grid-cols-1 gap-10  md:grid-cols-2 lg:grid-cols-3">
             {images.map((image)=>(
              <Image key={image.id}{...image}/>
             ))}
