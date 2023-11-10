@@ -1,8 +1,10 @@
 import axios from 'axios';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
+const fs = require('fs');
 
 const API_URL = 'https://api.unsplash.com/search/photos';
+
 const IMAGES_PER_PAGE = 20;
 
 function App() {
@@ -12,6 +14,7 @@ function App() {
   const [totalPages, setTotalPages] = useState(0);
   const [errorMsg, setErrorMsg] = useState('');
   const [loading, setLoading] = useState(false);
+  const [searchHistory, setSearchHistory] = useState([]);
 
   const fetchImages = useCallback(async () => {
     try {
@@ -21,11 +24,11 @@ function App() {
         const { data } = await axios.get(
           `${API_URL}?query=${
             searchInput.current.value
-          }&page=${page}&per_page=${IMAGES_PER_PAGE}&client_id=${
-            import.meta.env.VITE_API_KEY
-          }`
+          }&page=${page}&per_page=${IMAGES_PER_PAGE}&client_id=UQfJMbqVTSRSW3GxxhxQh7tflgs7uPEl-wl2G5LUfwk
+          `
         );
         setImages(data.results);
+
         setTotalPages(data.total_pages);
         setLoading(false);
       }
@@ -47,6 +50,15 @@ function App() {
 
   const handleSearch = (event) => {
     event.preventDefault();
+    const searchInputValue = searchInput.current.value;
+
+  // Add the search input value to the search history.
+  setSearchHistory([...searchHistory, searchInputValue]);
+
+  // Persist the search history to the db.json file.
+  const json = JSON.stringify(searchHistory);  
+  fs.writeFileSync('db.json', json);
+
     resetSearch();
   };
 
@@ -98,6 +110,7 @@ function App() {
             )}
           </div>
         </>
+        
       )}
     </div>
   );

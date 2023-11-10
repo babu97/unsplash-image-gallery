@@ -1,0 +1,20 @@
+{
+    "search": [
+      {
+        "name": "school",
+        "id": 1
+      },
+      {
+        "name": "tanzania",
+        "id": 2
+      },
+      {
+        "name": "somalia",
+        "id": 3
+      },
+      {
+        "name": "norway",
+        "id": 4
+      }
+    ]
+  }
