@@ -16,11 +16,11 @@ export default function Image(props){
                  </ul>
             </div>
             <div>
-                <ul>
+                {/* <ul>
                 <li><a href='https://instagram.com/${props.user.instagram_username}'>{props.user.instagram_username}</a></li>
 
                     <li>{props.likes} Likes </li>
-                </ul>
+                </ul> */}
             </div>
 
         </article>
